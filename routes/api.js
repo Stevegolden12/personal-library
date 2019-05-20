@@ -48,25 +48,26 @@ module.exports = function (app) {
 
     .post(upload.array(), function (req, res) {
       var title = req.body.title;
-      //response will contain new book object including atleast _id and title
-      console.log("BookTitleToAdd: " + req.body.createTitle)
-      console.log("BookCommentToAdd: " + req.body.createComment)
 
-      var newBook = new book({
-        _id: shortid.generate(),
-        title: req.body.createTitle,
-        comments: req.body.createComment    
-      })
+          //response will contain new book object including atleast _id and title
+        console.log("BookTitleToAdd: " + req.body.createTitle)
+        console.log("BookCommentToAdd: " + req.body.createComment)
 
-       newBook.save(newBook, function (err, issue) {
-        console.log("BOOK: " + book._id)        
-        if (err) {
-          res.send("Book could not be created")
-        }
-        else {
-          res.send("Book successfully created. <br> Book id number is: " + issue._id)
-        }
-      })
+        var newBook = new book({
+          _id: shortid.generate(),
+          title: req.body.createTitle,
+          comments: req.body.createComment
+        })
+
+        newBook.save(newBook, function (err, book) {
+          console.log("BOOK: " + book._id)
+          if (err) {
+            res.send("Book could not be created")
+          }
+          else {
+            res.send("Book successfully created. <br> Book id number is: " + book._id)
+          }
+        })
     })
 
     .delete(function (req, res) {
@@ -74,7 +75,7 @@ module.exports = function (app) {
     });
 
 
-
+  
   app.route('/api/books/:id')
     .get(function (req, res) {
       var bookid = req.params.id;
@@ -91,5 +92,5 @@ module.exports = function (app) {
       var bookid = req.params.id;
       //if successful response will be 'delete successful'
     });
-
+ 
 };
