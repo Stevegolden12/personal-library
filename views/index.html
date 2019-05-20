@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
   <title>FCC ISQA Project - Personal Library</title>
   <meta name="description" content="A cool thing made with HyperDev">
@@ -19,7 +19,7 @@
     <h2>User stories:</h2>
     <ol>
       <li style="color: lightgray;">Nothing from my website will be cached in my client as a security measure.</li>
-      <li>I will see that the site is powered by 'PHP 4.2.0' even though it isn't as a security measure.</li>
+      <li style="color: lightgray;">I will see that the site is powered by 'PHP 4.2.0' even though it isn't as a security measure.</li>
       <li>I can <b>post</b> a <code>title</code> to /api/books to add a book and returned will be the object with the <code>title</code> and a unique <code>_id</code>.</li>
       <li>I can <b>get</b> /api/books to retrieve an aray of all books containing <code>title</code>, <code>_id</code>, & <code>commentcount</code>.</li>
       <li>I can <b>get</b> /api/books/{_id} to retrieve a single object of a book containing <code>title</code>, <code>_id</code>, & an array of <code>comments</code> (empty array if no comments present).</li>
@@ -35,7 +35,7 @@
   <hr style='margin: 50px'>
   <div id='sampleposting'>
     <h2 style="text-align: left">Test API responses:</h2>
-    <form action="/api/books" method="post" class="border">
+    <form action="" method="post" class="border">
       <h4>Test post to /api/books</h4>
       Book Title:<br>
       <input type="text" name="title" value=""><br>
@@ -53,8 +53,9 @@
   <hr style='margin: 50px'>
   <div id='sampleui'>
     <h2 style="text-align: left">Sample Front-End:</h2>
-    <form id="newBookForm" class="border">
-      <input type="text" id="bookTitleToAdd" name="title" placeholder="New Book Title" style="width: 295px">
+    <form id="newBookForm" class="border" method="post" action="/api/books">
+      <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
+      <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
       <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
     </form>
     <div id='display'></div>
