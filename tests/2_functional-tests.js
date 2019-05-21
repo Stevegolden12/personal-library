@@ -70,7 +70,16 @@ suite('Functional Tests', function () {
     suite('GET /api/books => array of books', function () {
 
       test('Test GET /api/books', function (done) {
-        //done();
+        chai.request(server)
+          .get('/api/books/check/')
+          .end(function (err, res) {
+            assert.equal(res.status, 200);
+            assert.isObject(books, 'response should be an object');
+            assert.property(books[0][3], 'commentCount', 'Books in array should contain commentCount');
+            assert.property(books[0][2], 'title', 'Books in array should contain title');
+            assert.property(books[0][0], '_id', 'Books in array should contain _id');
+            done();
+          });
       });
 
     });

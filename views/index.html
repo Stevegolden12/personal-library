@@ -57,7 +57,13 @@
       <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
       <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
       <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
+    </form></br>
+    <h2 style="text-align: left">Get all book listings</h2>
+    <form id="getAllBookForm" class="border" method="get" action="/api/books/check/"> 
+      <button type="submit" value="Submit" id="newBook">Get every Book!</button>
     </form>
+    </br>
+    </br>
     <div id='display'></div>
     <div id='bookDetail' class='border'>
       <p id='detailTitle'>Select a book to see it's details and comments</p>
