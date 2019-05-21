@@ -40,27 +40,24 @@ var book = mongoose.model('books', bookSchema);
 
 module.exports = function (app) {
 
-  app.route('/api/books')
+  app.route('/api/books/check/')
     .get(function (req, res) {
       //response will be array of book objects
       //json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
     })
 
-    .post(upload.array(), function (req, res) {
-      var title = req.body.title;
-
+    .post(function (req, res) {
+      const title = req.body.createTitle;
+      const createComment = req.body.createComment;
           //response will contain new book object including atleast _id and title
-        console.log("BookTitleToAdd: " + req.body.createTitle)
-        console.log("BookCommentToAdd: " + req.body.createComment)
 
         var newBook = new book({
           _id: shortid.generate(),
-          title: req.body.createTitle,
-          comments: req.body.createComment
+          title: title,
+          comments: createComment
         })
 
         newBook.save(newBook, function (err, book) {
-          console.log("BOOK: " + book._id)
           if (err) {
             res.send("Book could not be created")
           }
@@ -76,7 +73,7 @@ module.exports = function (app) {
 
 
   
-  app.route('/api/books/:id')
+  app.route('/api/books/check/:id')
     .get(function (req, res) {
       var bookid = req.params.id;
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
