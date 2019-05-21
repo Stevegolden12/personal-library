@@ -88,8 +88,30 @@ module.exports = function (app) {
   
   app.route('/api/books/check/:id')
     .get(function (req, res) {
-      var bookid = req.params.id;
+      var bookEntryID = req.query.getIdForBook;
+      var bookId = req.params.id;
+      if (bookId === ':id') {
+        bookId = bookEntryID;
+      }
+
+      console.log("bookId: " + bookId)
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
+      book.find({
+        _id: bookId,
+
+      },
+        'title _id comments',
+        function (err, books) {
+
+
+          if (books !== undefined && books.length !== 0) {
+            res.send(books)
+          } else {
+            res.send("No searches returned")
+            //res.send("There are no matching searches")
+          }
+
+        })
     })
 
     .post(function (req, res) {
