@@ -33,7 +33,8 @@ var bookSchema = new Schema({
     default: shortid.generate
   },
   title: String,
-  comments: [String]
+  comments: [String],
+  commentCount: Number
 })
 
 var book = mongoose.model('books', bookSchema);
@@ -44,17 +45,29 @@ module.exports = function (app) {
     .get(function (req, res) {
       //response will be array of book objects
       //json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
+      console.log("Get route")
+      book.find({ _id: /./ }, '_id title commentCount', function (err, books) {
+        console.log("Get route callback function")
+        console.log("Books: " + books)
+        if (books !== undefined && books.length !== 0) {
+          res.send(books)
+        } else {
+          res.send("No searches returned")
+          //res.send("There are no matching searches")
+        }          
+      })
     })
 
     .post(function (req, res) {
       const title = req.body.createTitle;
       const createComment = req.body.createComment;
           //response will contain new book object including atleast _id and title
-      console.log("req.body: " + JSON.stringify(req.body))
+      console.log("Post route")
         var newBook = new book({
           _id: shortid.generate(),
           title: title,
-          comments: createComment
+          comments: createComment,
+          commentCount: 1
         })
 
         newBook.save(newBook, function (err, book) {
