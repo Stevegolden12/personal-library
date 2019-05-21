@@ -20,7 +20,7 @@
     <ol>
       <li style="color: lightgray;">Nothing from my website will be cached in my client as a security measure.</li>
       <li style="color: lightgray;">I will see that the site is powered by 'PHP 4.2.0' even though it isn't as a security measure.</li>
-      <li>I can <b>post</b> a <code>title</code> to /api/books to add a book and returned will be the object with the <code>title</code> and a unique <code>_id</code>.</li>
+      <li style="color: lightgray;">I can <b>post</b> a <code>title</code> to /api/books to add a book and returned will be the object with the <code>title</code> and a unique <code>_id</code>.</li>
       <li>I can <b>get</b> /api/books to retrieve an aray of all books containing <code>title</code>, <code>_id</code>, & <code>commentcount</code>.</li>
       <li>I can <b>get</b> /api/books/{_id} to retrieve a single object of a book containing <code>title</code>, <code>_id</code>, & an array of <code>comments</code> (empty array if no comments present).</li>
       <li>I can <b>post</b> a <code>comment</code> to /api/books/{_id} to add a comment to a book and returned will be the books object similar to <b>get</b> /api/books/{_id}.</li>
@@ -35,13 +35,13 @@
   <hr style='margin: 50px'>
   <div id='sampleposting'>
     <h2 style="text-align: left">Test API responses:</h2>
-    <form action="" method="post" class="border">
+    <form action="/api/books/" method="post" class="border">
       <h4>Test post to /api/books</h4>
       Book Title:<br>
       <input type="text" name="title" value=""><br>
       <input type="submit" value="Submit">
     </form>
-    <form action="" method="post" id="commentTest" class="border">
+    <form action="/api/books/" method="post" id="commentTest" class="border">
       <h4>Test post to /api/books/{bookid}</h4>
       BookId to comment on:<br>
       <input type="text" name="id" value="" id="idinputtest"><br>

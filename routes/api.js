@@ -50,7 +50,7 @@ module.exports = function (app) {
       const title = req.body.createTitle;
       const createComment = req.body.createComment;
           //response will contain new book object including atleast _id and title
-
+      console.log("req.body: " + JSON.stringify(req.body))
         var newBook = new book({
           _id: shortid.generate(),
           title: title,
