@@ -75,32 +75,46 @@
       <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
       <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
       <br />
-      <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+      <button type="submit" value="Submit" id="getBookWithId">Add comment!</button>
     </form>
     </br></br>
+   
+  <h2 style="text-align: left">Remove book with id</h2>
+  <form id="removeBookWithIdForm" class="border" method="delete" action="/api/books/check/:id">
+    <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
+    </br>
+    <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
+  </form>
+  </br></br>
+
+  </br>
+
+    <!--
     <div id='display'></div>
-    <div id='bookDetail' class='border'>
-      <p id='detailTitle'>Select a book to see it's details and comments</p>
-      <ol id='detailComments'></ol>
-    </div>
-    <button id='deleteAllBooks'>Delete all books...</button>
+    <form>
+      <div id='bookDetail' class='border'>
+        <p id='detailTitle'>Select a book to see it's details and comments</p>
+        <ol id='detailComments'></ol>
+      </div>
+      <button id='deleteAllBooks'>Delete all books...</button>
+    </form>
   </div>
   <hr style='margin: 50px'>
-
+      -->
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
           integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
           crossorigin="anonymous"></script>
   <script src="/public/client.js"></script>
   <script>
-      /*
-      *  For #sampleposting to update form action url to test inputs book id
-      */
-      $(function() {
-       $('#commentTest').submit(function(){
-         var id = $('#idinputtest').val();
-         $(this).attr('action', "/api/books/" + id);
-       });
+    /*
+    *  For #sampleposting to update form action url to test inputs book id
+    */
+    $(function () {
+      $('#commentTest').submit(function () {
+        var id = $('#idinputtest').val();
+        $(this).attr('action', "/api/books/" + id);
       });
+    });
   </script>
 </body>
 </html>

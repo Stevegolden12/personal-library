@@ -87,6 +87,7 @@ module.exports = function (app) {
 
   
   app.route('/api/books/check/:id')
+
     .get(function (req, res) {
       var bookEntryID = req.query.getIdForBook;
       var bookId = req.params.id;
@@ -168,7 +169,8 @@ module.exports = function (app) {
 
     .delete(function (req, res) {
       var bookid = req.params.id;
+      console.log("Delete form button working")
       //if successful response will be 'delete successful'
-    });
+    })
  
 };
