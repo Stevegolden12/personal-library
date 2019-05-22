@@ -88,6 +88,7 @@ module.exports = function (app) {
   
   app.route('/api/books/check/:id')
     .get(function (req, res) {
+      console.log(req.query)
       var bookEntryID = req.query.getIdForBook;
       var bookId = req.params.id;
       if (bookId === ':id') {
