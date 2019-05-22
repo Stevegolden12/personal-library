@@ -98,12 +98,9 @@ module.exports = function (app) {
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       book.find({
         _id: bookId,
-
       },
         'title _id comments',
         function (err, books) {
-
-
           if (books !== undefined && books.length !== 0) {
             res.send(books)
           } else {
@@ -129,10 +126,10 @@ module.exports = function (app) {
 
       *************************************/     
       book.findById(bookid, '_id commentCount', { new: true }, function (err, books) {
-                  console.log("AddCount: " + books)
+    
         if (books) {  
 
-
+          console.log("books: " + books)
           book.findOneAndUpdate(
             { _id: books._id },
             {
