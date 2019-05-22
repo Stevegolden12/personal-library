@@ -69,6 +69,14 @@
       <br />
       <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
     </form>
+    </br>
+    <h2 style="text-align: left">Add comment to Book</h2>
+    <form id="getBookWithIdForm" class="border" method="post" action="/api/books/check/:id">
+      <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
+      <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
+      <br />
+      <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+    </form>
     </br></br>
     <div id='display'></div>
     <div id='bookDetail' class='border'>
