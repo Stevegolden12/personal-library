@@ -115,7 +115,18 @@ suite('Functional Tests', function () {
     suite('POST /api/books/[id] => add comment/expect book object with id', function () {
 
       test('Test POST /api/books/[id] with comment', function (done) {
-        //done();
+        test('#example Test GET /api/books', function (done) {
+          chai.request(server)
+            .get('/api/books/check/:id')
+            .end(function (err, res, req) {
+              assert.equal(res.status, 200);
+              assert.isObject(books, 'books response should be an Object');
+              assert.property(req.body.updateComment, 'updateComment', 'Should be a comment');
+              assert.property(books._id, '_id', 'Books object should contain _id');
+              assert.property(books.comments, 'comments', 'Books object should contain comments');
+              done();
+            });
+        });
       });
 
     });

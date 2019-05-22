@@ -88,7 +88,6 @@ module.exports = function (app) {
   
   app.route('/api/books/check/:id')
     .get(function (req, res) {
-      console.log(req.query)
       var bookEntryID = req.query.getIdForBook;
       var bookId = req.params.id;
       if (bookId === ':id') {
@@ -99,12 +98,9 @@ module.exports = function (app) {
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       book.find({
         _id: bookId,
-
       },
         'title _id comments',
         function (err, books) {
-
-
           if (books !== undefined && books.length !== 0) {
             res.send(books)
           } else {
@@ -117,8 +113,57 @@ module.exports = function (app) {
 
     .post(function (req, res) {
       var bookid = req.params.id;
-      var comment = req.body.comment;
+      var bookEntryid = req.body.postIdForComment;
+      var comment = req.body.updateComment;
+      console.log("comments: " + comment)
+      if (bookid === ':id') {
+        bookid = bookEntryid;
+      }
       //json res format same as .get
+      /*************************************
+             Change issue to
+
+
+      *************************************/     
+      book.findById(bookid, '_id commentCount', { new: true }, function (err, books) {
+    
+        if (books) {  
+
+          console.log("books: " + books)
+          book.findOneAndUpdate(
+            { _id: books._id },
+            {
+              $push: {              
+                comments: comment,            
+              },   
+            },
+            { new: true },
+            (err, books1) => {
+              if (err) {
+
+              } else {
+                res.send("Successfully updated.")
+              }
+
+            });
+
+          
+          book.findOneAndUpdate(
+            { _id: books._id },
+            {
+              $set: {
+                commentCount: books.commentCount + 1,
+              },
+            },
+            { new: true },
+            (err, books1) => {           
+
+            });
+
+        } else {
+          res.send("Could not update id " + req.body.update_id)
+        }  
+      })
     })
 
     .delete(function (req, res) {
