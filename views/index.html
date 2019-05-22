@@ -21,8 +21,8 @@
       <li style="color: lightgray;">Nothing from my website will be cached in my client as a security measure.</li>
       <li style="color: lightgray;">I will see that the site is powered by 'PHP 4.2.0' even though it isn't as a security measure.</li>
       <li style="color: lightgray;">I can <b>post</b> a <code>title</code> to /api/books to add a book and returned will be the object with the <code>title</code> and a unique <code>_id</code>.</li>
-      <li>I can <b>get</b> /api/books to retrieve an aray of all books containing <code>title</code>, <code>_id</code>, & <code>commentcount</code>.</li>
-      <li>I can <b>get</b> /api/books/{_id} to retrieve a single object of a book containing <code>title</code>, <code>_id</code>, & an array of <code>comments</code> (empty array if no comments present).</li>
+      <li style="color: lightgray;">I can <b>get</b> /api/books to retrieve an aray of all books containing <code>title</code>, <code>_id</code>, & <code>commentcount</code>.</li>
+      <li style="color: lightgray;">I can <b>get</b> /api/books/{_id} to retrieve a single object of a book containing <code>title</code>, <code>_id</code>, & an array of <code>comments</code> (empty array if no comments present).</li>
       <li>I can <b>post</b> a <code>comment</code> to /api/books/{_id} to add a comment to a book and returned will be the books object similar to <b>get</b> /api/books/{_id}.</li>
       <li>I can <b>delete</b> /api/books/{_id} to delete a book from the collection. Returned will be 'delete successful' if successful.</li>
       <li>If I try to request a book that doesn't exist I will get a 'no book exists' message.</li>
@@ -59,11 +59,17 @@
       <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
     </form></br>
     <h2 style="text-align: left">Get all book listings</h2>
-    <form id="getAllBookForm" class="border" method="get" action="/api/books/check/"> 
-      <button type="submit" value="Submit" id="newBook">Get every Book!</button>
+    <form id="getAllBookForm" class="border" method="get" action="/api/books/check/">
+      <button type="submit" value="Submit" id="getEveryBook">Get every Book!</button>
     </form>
     </br>
-    </br>
+    <h2 style="text-align: left">Get book with id</h2>
+    <form id="getBookWithIdForm" class="border" method="get" action="/api/books/check/:id">
+      <input type="text" id="bookWithIdToGet" name="getIdForBook" placeholder="Book id" style="width: 295px">
+      <br />
+      <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+    </form>
+    </br></br>
     <div id='display'></div>
     <div id='bookDetail' class='border'>
       <p id='detailTitle'>Select a book to see it's details and comments</p>

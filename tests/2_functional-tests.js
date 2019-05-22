@@ -86,13 +86,27 @@ suite('Functional Tests', function () {
 
 
     suite('GET /api/books/[id] => book object with [id]', function () {
-
+      //*****GET this and test below finished
       test('Test GET /api/books/[id] with id not in db', function (done) {
-        //done();
+        chai.request(server)
+          .get('/api/books/:id')
+          .end(function (err, res) {
+            assert.equal(res.status, 200);
+            assert.isObject(res.query, 'response should be an object');
+            assert.property(res.query.getIdForBook, 'getIdForBook', 'res.query in objects should contain getIdForBook');
+            done();
+          });
       });
 
       test('Test GET /api/books/[id] with valid id in db', function (done) {
-        //done();
+        chai.request(server)
+          .get('/api/books/:id')
+          .end(function (err, books) {
+            assert.equal(res.status, 200);
+            assert.isArray(books, 'response should be an array');
+            assert.property(books._id, '_id', 'books in objects should contain _id');
+            done();
+          });
       });
 
     });
