@@ -42,6 +42,7 @@ var book = mongoose.model('books', bookSchema);
 module.exports = function (app) {
 
   app.route('/api/books/check/')
+    
     .get(function (req, res) {
       //response will be array of book objects
       //json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
@@ -57,7 +58,7 @@ module.exports = function (app) {
         }          
       })
     })
-
+    
     .post(function (req, res) {
       const title = req.body.createTitle;
       const createComment = req.body.createComment;
@@ -79,7 +80,7 @@ module.exports = function (app) {
           }
         })
     })
-
+    
     .delete(function (req, res) {
       //if successful response will be 'complete delete successful'
     });
@@ -94,7 +95,7 @@ module.exports = function (app) {
         bookId = bookEntryID;
       }
 
-      console.log("bookId: " + bookId)
+    
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       book.find({
         _id: bookId,
@@ -110,7 +111,7 @@ module.exports = function (app) {
 
         })
     })
-
+    
     .post(function (req, res) {
       var bookid = req.params.id;
       var bookEntryid = req.body.postIdForComment;
@@ -120,11 +121,7 @@ module.exports = function (app) {
         bookid = bookEntryid;
       }
       //json res format same as .get
-      /*************************************
-             Change issue to
-
-
-      *************************************/     
+  
       book.findById(bookid, '_id commentCount', { new: true }, function (err, books) {
     
         if (books) {  
@@ -165,10 +162,31 @@ module.exports = function (app) {
         }  
       })
     })
-
+    /***************************************************
+     * Every time hit delete id it is going to get method
+     * 
+     * ************************************************/
     .delete(function (req, res) {
       var bookid = req.params.id;
+      var bookRemoveID = req.body.IdForRemoveBook;
+      console.log("bookid: " + bookid)
+      if (bookid === ':id') {
+        console.log("bookRemoveID " + req.body.IdForRemoveBook)
+        bookid = bookRemoveID;
+      }
+      
+      book.findById(bookid, { new: true }, function (err, books) {
+        //console.log("FIND delete book: " + books)
+        if (books !== null) {
+          book.findByIdAndDelete({ _id: bookid }, function (err) {
+            res.send("delete successful")
+          })
+        } else {
+          res.send("no book exists")
+        }
+      })
+
       //if successful response will be 'delete successful'
-    });
+    })
  
 };
