@@ -57,7 +57,7 @@ suite('Functional Tests', function () {
         chai.request(server)
           .get('/api/books/')
           .end(function (err, res) {
-            assert.equal(res.status, 200);            assert.isArray(res.body, 'response should be an array');
+            assert.equal(res.status, 200); assert.isArray(res.body, 'response should be an array');
             assert.property(res.body.createComment.length, 'commentcount', 'Books in array should contain commentcount');
             //assert.property(res.body[0], '_id', 'Books in array should contain _id');
             done();
@@ -72,7 +72,7 @@ suite('Functional Tests', function () {
       test('Test GET /api/books', function (done) {
         chai.request(server)
           .get('/api/books/check/')
-          .end(function (err, res) {
+          .end(function (err, res, books) {
             assert.equal(res.status, 200);
             assert.isObject(books, 'response should be an object');
             assert.property(books[0][3], 'commentCount', 'Books in array should contain commentCount');
@@ -101,7 +101,7 @@ suite('Functional Tests', function () {
       test('Test GET /api/books/[id] with valid id in db', function (done) {
         chai.request(server)
           .get('/api/books/:id')
-          .end(function (err, books) {
+          .end(function (err, res, books) {
             assert.equal(res.status, 200);
             assert.isArray(books, 'response should be an array');
             assert.property(books._id, '_id', 'books in objects should contain _id');
@@ -118,7 +118,7 @@ suite('Functional Tests', function () {
         test('#example Test GET /api/books', function (done) {
           chai.request(server)
             .get('/api/books/check/:id')
-            .end(function (err, res, req) {
+            .end(function (err, res, req, books) {
               assert.equal(res.status, 200);
               assert.isObject(books, 'books response should be an Object');
               assert.property(req.body.updateComment, 'updateComment', 'Should be a comment');
