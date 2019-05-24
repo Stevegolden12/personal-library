@@ -26,8 +26,8 @@
       <li style="color: lightgray;">I can <b>post</b> a <code>comment</code> to /api/books/{_id} to add a comment to a book and returned will be the books object similar to <b>get</b> /api/books/{_id}.</li>
       <li style="color: lightgray;">I can <b>delete</b> /api/books/{_id} to delete a book from the collection. Returned will be 'delete successful' if successful.</li>
       <li style="color: lightgray;">If I try to request a book that doesn't exist I will get a 'no book exists' message.</li>
-      <li>I can send a <b>delete</b> request to /api/books to delete all books in the database. Returned will be 'complete delete successful' if successful.</li>
-      <li>All 6 functional tests required are complete and passing.</li>
+      <li style="color: lightgray;">I can send a <b>delete</b> request to /api/books to delete all books in the database. Returned will be 'complete delete successful' if successful.</li>
+      <li style="color: lightgray;">All 6 functional tests required are complete and passing.</li>
     </ol>
     <br>
     <img src='https://cdn.gomix.com/d7932c52-287f-4dae-b175-631fef453000%2FScreen%20Shot%202016-12-16%20at%201.35.56%20AM.png' />
@@ -78,30 +78,25 @@
       <button type="submit" value="Submit" id="getBookWithId">Add comment!</button>
     </form>
     </br></br>
-   
-  <h2 style="text-align: left">Remove book with id</h2>
-  <form id="removeBookWithIdForm" class="border" method="POST" action="/api/books/check/:id?_method=DELETE">
-    <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
-    <input type="hidden" id="removebookWithId" name="_method" placeholder="" style="width: 295px">
+
+    <h2 style="text-align: left">Remove book with id</h2>
+    <form id="removeBookWithIdForm" class="border" method="POST" action="/api/books/check/:id?_method=DELETE">
+      <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
+      <input type="hidden" id="removebookWithId" name="_method" placeholder="" style="width: 295px">
+      </br>
+      <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
+    </form>
+    </br></br>
+
     </br>
-    <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
-  </form>
-  </br></br>
 
-  </br>
-
-    <!--
-    <div id='display'></div>
-    <form>
-      <div id='bookDetail' class='border'>
-        <p id='detailTitle'>Select a book to see it's details and comments</p>
-        <ol id='detailComments'></ol>
-      </div>
+    <h2 style="text-align: left">Delete all books</h2>
+    <form id="removeAllBooks" class="border" method="POST" action="/api/books/check?_method=DELETE">
       <button id='deleteAllBooks'>Delete all books...</button>
     </form>
   </div>
-  <hr style='margin: 50px'>
-      -->
+ 
+
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
           integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
           crossorigin="anonymous"></script>

@@ -82,7 +82,15 @@ module.exports = function (app) {
     })
     
     .delete(function (req, res) {
+      console.log("DELETE ALL BUTTON working")
       //if successful response will be 'complete delete successful'
+      book.deleteMany({ _id: /./ }, function (err) {
+        if (!err) {
+          res.send("complete delete successful")
+        } else {
+          res.send("Did not delete all")
+        }
+      });
     });
 
 
@@ -162,10 +170,6 @@ module.exports = function (app) {
         }  
       })
     })
-    /***************************************************
-     * Every time hit delete id it is going to get method
-     * 
-     * ************************************************/
     .delete(function (req, res) {
       var bookid = req.params.id;
       var bookRemoveID = req.body.IdForRemoveBook;
