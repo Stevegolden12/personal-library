@@ -10,90 +10,53 @@
 </head>
 <body>
   <header>
-    <h1>
-      <b>ISQA Project</b> - Personal Library
-    </h1>
+    <h1>Personal Library</h1>
   </header>
-  <br>
-  <div id="userstories">
-    <h2>User stories:</h2>
-    <ol>
-      <li style="color: lightgray;">Nothing from my website will be cached in my client as a security measure.</li>
-      <li style="color: lightgray;">I will see that the site is powered by 'PHP 4.2.0' even though it isn't as a security measure.</li>
-      <li style="color: lightgray;">I can <b>post</b> a <code>title</code> to /api/books to add a book and returned will be the object with the <code>title</code> and a unique <code>_id</code>.</li>
-      <li style="color: lightgray;">I can <b>get</b> /api/books to retrieve an aray of all books containing <code>title</code>, <code>_id</code>, & <code>commentcount</code>.</li>
-      <li style="color: lightgray;">I can <b>get</b> /api/books/{_id} to retrieve a single object of a book containing <code>title</code>, <code>_id</code>, & an array of <code>comments</code> (empty array if no comments present).</li>
-      <li style="color: lightgray;">I can <b>post</b> a <code>comment</code> to /api/books/{_id} to add a comment to a book and returned will be the books object similar to <b>get</b> /api/books/{_id}.</li>
-      <li style="color: lightgray;">I can <b>delete</b> /api/books/{_id} to delete a book from the collection. Returned will be 'delete successful' if successful.</li>
-      <li style="color: lightgray;">If I try to request a book that doesn't exist I will get a 'no book exists' message.</li>
-      <li style="color: lightgray;">I can send a <b>delete</b> request to /api/books to delete all books in the database. Returned will be 'complete delete successful' if successful.</li>
-      <li style="color: lightgray;">All 6 functional tests required are complete and passing.</li>
-    </ol>
-    <br>
-    <img src="https://cdn.gomix.com/d7932c52-287f-4dae-b175-631fef453000%2FScreen%20Shot%202016-12-16%20at%201.35.56%20AM.png" />
-  </div>
   <hr style="margin: 50px">
-  <div id="sampleposting">
-    <h2 style="text-align: left">Test API responses:</h2>
-    <form action="/api/books/" method="post" class="border">
-      <h4>Test post to /api/books</h4>
-      Book Title:<br>
-      <input type="text" name="title" value=""><br>
-      <input type="submit" value="Submit">
-    </form>
-    <form action="/api/books/" method="post" id="commentTest" class="border">
-      <h4>Test post to /api/books/{bookid}</h4>
-      BookId to comment on:<br>
-      <input type="text" name="id" value="" id="idinputtest"><br>
-      Comment:<br>
-      <input type="text" name="comment" value=""><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-  <hr style="margin: 50px">
-  <div id="sampleui">
-    <h2 style="text-align: left">Sample Front-End:</h2>
-    <form id="newBookForm" class="border" method="post" action="/api/books/check/">
-      <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
-      <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
-      <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
-    </form><br>
-    <h2 style="text-align: left">Get all book listings</h2>
-    <form id="getAllBookForm" class="border" method="get" action="/api/books/check/">
-      <button type="submit" value="Submit" id="getEveryBook">Get every Book!</button>
-    </form>
-    <br>
-    <h2 style="text-align: left">Get book with id</h2>
-    <form id="getBookWithIdForm" class="border" method="get" action="/api/books/check/:id">
-      <input type="text" id="bookWithIdToGet" name="getIdForBook" placeholder="Book id" style="width: 295px">
-      <br />
-      <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
-    </form>
-    <br>
-    <h2 style="text-align: left">Add comment to Book</h2>
-    <form id="addCommentWithIdForm" class="border" method="post" action="/api/books/check/:id">
-      <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
-      <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
-      <br />
-      <button type="submit" value="Submit" id="addCommentWithId">Add comment!</button>
-    </form>
-    <br><br>
-
-    <h2 style="text-align: left">Remove book with id</h2>
-    <form id="removeBookWithIdForm" class="border" method="POST" action="/api/books/check/:id?_method=DELETE">
-      <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
-      <input type="hidden" id="rmvbookWithId" name="_method" placeholder="" style="width: 295px">
+  <section id="formSection">
+    <div id="sampleui">
+      <h2>Sample Front-End:</h2>
+      <form id="newBookForm" class="border shadoweffect" method="post" action="/api/books/check/">
+        <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
+        <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
+        <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
+      </form><br>
+      <h2>Get all book listings</h2>
+      <form id="getAllBookForm" class="border shadoweffect" method="get" action="/api/books/check/">
+        <button type="submit" value="Submit" id="getEveryBook">Get every Book!</button>
+      </form>
       <br>
-      <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
-    </form>
-    <br><br>
-    <br>
-    <h2 style="text-align: left">Delete all books</h2>
-    <form id="removeAllBooks" class="border" method="POST" action="/api/books/check?_method=DELETE">
-      <button id="deleteAllBooks">Delete all books...</button>
-    </form>
-  </div>
+      <h2>Get book with id</h2>
+      <form id="getBookWithIdForm" class="border shadoweffect" method="get" action="/api/books/check/:id">
+        <input type="text" id="bookWithIdToGet" name="getIdForBook" placeholder="Book id" style="width: 295px">
+        <br />
+        <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+      </form>
+      <br>
+      <h2>Add comment to Book</h2>
+      <form id="addCommentWithIdForm" class="border shadoweffect" method="post" action="/api/books/check/:id">
+        <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
+        <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
+        <br />
+        <button type="submit" value="Submit" id="addCommentWithId">Add comment!</button>
+      </form>
+      <br><br>
 
+      <h2>Remove book with id</h2>
+      <form id="removeBookWithIdForm" class="border shadoweffect" method="POST" action="/api/books/check/:id?_method=DELETE">
+        <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
+        <input type="hidden" id="rmvbookWithId" name="_method" placeholder="" style="width: 295px">
+        <br>
+        <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
+      </form>
+      <br><br>
+      <br>
+      <h2>Delete all books</h2>
+      <form id="removeAllBooks" class="border shadoweffect" method="POST" action="/api/books/check?_method=DELETE">
+        <button id="deleteAllBooks">Delete all books...</button>
+      </form>
+    </div>
+  </section>
 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
           integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="

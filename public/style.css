@@ -1,8 +1,37 @@
+h1 {
+  text-align: center;
+}
+
 .border {
   border-style: inset;
   border-width: 1px;
   margin: 10px;
 }
+
+#formSection {
+  display: flex;
+  justify-content: center;
+}
+
+.shadoweffect {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+  form:hover {
+    background-color: palegreen;
+  }
 
 #sampleui {
   max-width: 450px;
