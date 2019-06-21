@@ -2,6 +2,8 @@ h1 {
   text-align: center;
 }
 
+
+
 .border {
   border-style: inset;
   border-width: 1px;
@@ -27,11 +29,12 @@ form {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  max-width: 320px;
 }
 
-  form:hover {
-    background-color: palegreen;
-  }
+form:hover {
+  background-color: palegreen;
+}
 
 #sampleui {
   max-width: 450px;
@@ -51,4 +54,25 @@ form {
 
 form {
   padding: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  #titleLine {
+    margin-bottom: 40px;
+  }
+
+  #sampleui {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #sampleui {
+    grid-column-gap: 40px; 
+  }
 }
