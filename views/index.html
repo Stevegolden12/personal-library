@@ -9,51 +9,55 @@
   <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-  <header>
-    <h1>Personal Library</h1>
-  </header>
-  <hr style="margin: 50px">
+  <header><h1>Personal Library</h1></header>
+  <hr id="titleLine">
   <section id="formSection">
     <div id="sampleui">
-      <h2>Sample Front-End:</h2>
       <form id="newBookForm" class="border shadoweffect" method="post" action="/api/books/check/">
-        <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
-        <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
-        <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
-      </form><br>
-      <h2>Get all book listings</h2>
+        <fieldset>
+          <legend>Add new book:</legend>
+          <input type="text" id="bookTitleToAdd" name="createTitle" placeholder="New Book Title" style="width: 295px">
+          <input type="text" id="bookCommentToAdd" name="createComment" placeholder="comment" style="width: 295px">
+          <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
+        </fieldset>
+      </form>      
       <form id="getAllBookForm" class="border shadoweffect" method="get" action="/api/books/check/">
-        <button type="submit" value="Submit" id="getEveryBook">Get every Book!</button>
+        <fieldset>
+          <legend>Get all book listings:</legend>
+          <button type="submit" value="Submit" id="getEveryBook">Get every Book!</button>
+        </fieldset>
       </form>
-      <br>
-      <h2>Get book with id</h2>
       <form id="getBookWithIdForm" class="border shadoweffect" method="get" action="/api/books/check/:id">
-        <input type="text" id="bookWithIdToGet" name="getIdForBook" placeholder="Book id" style="width: 295px">
-        <br />
-        <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+        <fieldset>
+          <legend>Get book with id:</legend>
+          <input type="text" id="bookWithIdToGet" name="getIdForBook" placeholder="Book id" style="width: 295px">
+          <br />
+          <button type="submit" value="Submit" id="getBookWithId">Get book!</button>
+        </fieldset>
       </form>
-      <br>
-      <h2>Add comment to Book</h2>
       <form id="addCommentWithIdForm" class="border shadoweffect" method="post" action="/api/books/check/:id">
-        <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
-        <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
-        <br />
-        <button type="submit" value="Submit" id="addCommentWithId">Add comment!</button>
+        <fieldset>
+          <legend>Add comment to Book:</legend>
+          <input type="text" id="bookIdToPostUpdateComment" name="postIdForComment" placeholder="Book id" style="width: 295px">
+          <input type="text" id="bookCommentToUpdate" name="updateComment" placeholder="Make comment" style="width: 295px">
+          <br />
+          <button type="submit" value="Submit" id="addCommentWithId">Add comment!</button>
+        </fieldset>
       </form>
-      <br><br>
-
-      <h2>Remove book with id</h2>
       <form id="removeBookWithIdForm" class="border shadoweffect" method="POST" action="/api/books/check/:id?_method=DELETE">
-        <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
-        <input type="hidden" id="rmvbookWithId" name="_method" placeholder="" style="width: 295px">
-        <br>
-        <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
+        <fieldset>
+          <legend>Remove book with id:</legend>
+          <input type="text" id="removebookWithId" name="IdForRemoveBook" placeholder="Book id" style="width: 295px">
+          <input type="hidden" id="rmvbookWithId" name="_method" placeholder="" style="width: 295px">
+          <br>
+          <button type="submit" value="Submit" id="removeBookWithId">Remove book</button>
+        </fieldset>
       </form>
-      <br><br>
-      <br>
-      <h2>Delete all books</h2>
       <form id="removeAllBooks" class="border shadoweffect" method="POST" action="/api/books/check?_method=DELETE">
-        <button id="deleteAllBooks">Delete all books...</button>
+        <fieldset>
+          <legend>Delete all books:</legend>
+          <button id="deleteAllBooks">Delete all books...</button>
+        </fieldset>
       </form>
     </div>
   </section>
