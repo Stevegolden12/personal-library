@@ -1,13 +1,17 @@
-**FreeCodeCamp**- Information Security and Quality Assurance
-------
+# Personal Library
 
-Project Personal Library
+Personal library app using Express, MongoDB, and Mongoose with HTML, CSS, and JavaScript. Part of freeCodeCamp Information Security and Quality Assurance certificate projects.
 
-1) ADD YOUR MongoDB connection string to .env without quotes as db
-    `example: DB=mongodb://admin:pass@1234.mlab.com:1234/fccpersonallib`
-2) SET NODE_ENV to `test` without quotes
-3) You need to create all routes within `routes/api.js`
-4) You will add any security features to `server.js`
-5) You will create all of the functional tests in `tests/2_functional-tests.js`
+## Installation
+
+Download the files [here](https://github.com/Stevegolden12/personal-library)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Acknowledgement
+
+Thank you to [freeCodeCamp](https://www.freecodecamp.org/) for helping me learn Express, MongoDB, Mongoose, and improving my JavaScript skills!
 
 

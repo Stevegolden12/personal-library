@@ -1,8 +1,15 @@
+:root {
+  --form-hover-color: hsl(120, 93%, 79%); 
+
+}
+
+body {
+
+}
+
 h1 {
   text-align: center;
 }
-
-
 
 .border {
   border-style: inset;
@@ -33,7 +40,7 @@ form {
 }
 
 form:hover {
-  background-color: palegreen;
+  background-color: var(--form-hover-color);
 }
 
 #sampleui {
